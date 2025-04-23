@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 14:39:40 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/03/06 14:46:09 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/23 16:29:36 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/23 17:01:51 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+#ifndef WARLOCK_HPP
+#define WARLOCK_HPP
 
-#include "WrongAnimal.hpp"
+#include <iostream>
 
-class WrongCat : public WrongAnimal
+class Warlock
 {
-	public :
+	private:
+		std::string _name;
+		std::string _title;
+	public:
+		Warlock(std::string name, std::string title);
+		~Warlock();
+		Warlock(const Warlock& other);
+		Warlock& operator=(const Warlock& other);
 
-	WrongCat();
-	~WrongCat();
-	WrongCat(std::string type);
-	WrongCat(const WrongCat& other); 
-	std::string get_Type() const;
-	void set_Type(const std::string type);
-	WrongCat& operator=(const WrongCat& other);
-	void makeSound() const;
+		std::string getName() const;
+		std::string getTitle() const;
+		void	setTitle(const std::string& title);
+		void introduce() const;
 };
 
 #endif

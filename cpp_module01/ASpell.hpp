@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   ASpell.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 13:16:53 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/03/12 15:08:06 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/23 17:08:51 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/23 17:13:09 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef ASPELL_HPP
+#define ASPELL_HPP
 
-#include "colors.hpp"
 #include <iostream>
 
-class Animal
+class ASpell 
 {
-	protected:
-
-	std::string type;
-	
+	protected :
+		std::string name;
+		std::string effects;
 	public :
-
-	Animal();
-	virtual ~Animal();
-	Animal(std::string type);
-	Animal(const Animal& const);
-	std::string get_Type() const;
-	void set_Type(const std::string type);
-	Animal& operator=(const Animal& other);
-	virtual void makeSound() const;
+		ASpell(std::string name, std::string effects);
+		virtual ~ASpell();
+		ASpell(const ASpell& other);
+		ASpell& operator=(const ASpell& other);
+		
+		std::string getName() const;
+		std::string getEffects() const;
+		virtual ASpell* clone() const = 0;
 };
-
-std::ostream& operator<<(std::ostream& out, const Animal& Animal);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:32:42 by ylenoel           #+#    #+#             */
-/*   Updated: 2024/12/20 18:21:13 by ylenoel          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:09:23 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,4 +130,4 @@
 // Reset Color
 # define C_RESET "\033[0m"
 
-#endif // COLORS_H
+#endif
