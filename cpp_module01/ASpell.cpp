@@ -6,11 +6,12 @@
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 17:13:32 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/23 17:21:52 by ylenoel          ###   ########.fr       */
+/*   Updated: 2025/04/24 14:50:43 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ASpell.hpp"
+#include "ATarget.hpp"
 
 ASpell::ASpell(std::string name, std::string effects) : name(name), effects(effects)
 {
@@ -45,4 +46,12 @@ std::string ASpell::getName() const
 	return this->name;	
 }
 
-std::string ASpell::getTitle
+std::string ASpell::getEffects() const
+{
+	return this->effects;
+}
+
+void ASpell::launch(const ATarget& target) const
+{
+	target.getHitBySpell(*this);
+}
