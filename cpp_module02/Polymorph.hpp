@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Polymorph.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 14:51:26 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/25 15:37:35 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef POLYMORPH_HPP
+#define POLYMORPH_HPP
+
 #include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
 #include <iostream>
 
-int main()
+class Polymorph : public ASpell
 {
-  Warlock richard("Richard", "the Titled");
+    private:
+        std::string name;
+    public:
+        Polymorph();
+        ~Polymorph();
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+        ASpell* clone() const;
+};
 
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
-}
+#endif

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dummy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 15:10:20 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/24 15:12:16 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ASpell.hpp"
+#ifndef DUMMY_HPP
+#define DUMMY_HPP
+
 #include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
 #include <iostream>
 
-int main()
+class Dummy : public ATarget
 {
-  Warlock richard("Richard", "the Titled");
+    public:
+        Dummy();
+        ~Dummy();
+        ATarget* clone() const;
+};
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
-
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
-}
+#endif

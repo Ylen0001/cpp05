@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   BrickWall.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 15:12:22 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/25 15:39:39 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ASpell.hpp"
 #include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
-#include <iostream>
+#include "BrickWall.hpp"
 
-int main()
+BrickWall::BrickWall() : ATarget("Inconspicuous Red-brick Wall")
 {
-  Warlock richard("Richard", "the Titled");
+    // std::cout << "BrickWall's constructor called!" << std::endl;
+}
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+BrickWall::~BrickWall()
+{
+    // std::cout << "BrickWall's destructor called!" << std::endl;
+}
 
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
+ATarget* BrickWall::clone() const
+{
+    return (new BrickWall());
 }

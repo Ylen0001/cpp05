@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fireball.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 14:51:26 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/25 15:34:47 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FIREBALL_HPP
+#define FIREBALL_HPP
+
 #include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
 #include <iostream>
 
-int main()
+class Fireball : public ASpell
 {
-  Warlock richard("Richard", "the Titled");
+    private:
+        std::string name;
+    public:
+        Fireball();
+        ~Fireball();
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+        ASpell* clone() const;
+};
 
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
-}
+#endif

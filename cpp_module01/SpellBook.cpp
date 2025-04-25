@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dummy.cpp                                          :+:      :+:    :+:   */
+/*   SpellBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:12:22 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 14:56:57 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/25 16:06:53 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/25 16:16:26 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ATarget.hpp"
-#include "Dummy.hpp"
+#include "SpellBook.hpp"
 
-Dummy::Dummy() : ATarget("Target Practice Dummy")
+SpellBook::SpellBook(){}
+
+SpellBook::~SpellBook(){}
+
+SpellBook::SpellBook(const SpellBook& other)
 {
-    // std::cout << "Dummy's constructor called!" << std::endl;
+	for(int i = 0; i < 4; i++)
+	{
+		if(other.book[i] != NULL)
+		{
+			this->book[i] = other.book[i];
+		}
+	}
 }
 
-Dummy::~Dummy()
+SpellBook& SpellBook::operator=(const SpellBook& other)
 {
-    // std::cout << "Dummy's destructor called!" << std::endl;
-}
-
-ATarget* Dummy::clone() const
-{
-    return (new Dummy());
+	for(int i = 0; i < 4; i++)
+	{
+		if(other.book[i] != NULL)
+		{
+			this->book[i] = other.book[i];
+		}
+	}
+	return (*this);
 }

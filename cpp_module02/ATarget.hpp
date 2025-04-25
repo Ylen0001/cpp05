@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ATarget.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 14:22:32 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/24 14:47:50 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
+#ifndef ATARGET_HPP
+#define ATARGET_HPP
+
 #include <iostream>
+#include "ASpell.hpp"
 
-int main()
+class ATarget 
 {
-  Warlock richard("Richard", "the Titled");
+    protected:
+        std::string type;
+    public:
+        ATarget();
+        ATarget(std::string type);
+        virtual ~ATarget();
+        ATarget& operator=(const ATarget& other);
+        ATarget(const ATarget& other);
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+        std::string getType() const;
+        void getHitBySpell(const ASpell& spell) const;
+};
 
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
-}
+#endif

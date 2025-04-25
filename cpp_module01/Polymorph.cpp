@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fireball copy.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:14:39 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 15:23:04 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/04/24 14:57:04 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/04/25 15:37:05 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Polymorph.hpp"
 #include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
-#include "Warlock.hpp"
-#include <iostream>
 
-int main()
+Polymorph::Polymorph() : ASpell("Polymorph", "turned into a critter")
 {
-  Warlock richard("Richard", "the Titled");
+    // std::cout << "Polymorph's constructor called!" << std::endl;
+}
 
-  Dummy bob;
-  Fwoosh* fwoosh = new Fwoosh();
+Polymorph::~Polymorph()
+{
+    // std::cout << "Polymorph's destructor called!" << std::endl;
+}
 
-  richard.learnSpell(fwoosh);
-
-  richard.introduce();
-  richard.launchSpell("Fwoosh", bob);
-
-  richard.forgetSpell("Fwoosh");
-  richard.launchSpell("Fwoosh", bob);
-  delete fwoosh;
+ASpell* Polymorph::clone() const
+{
+    return (new Polymorph());
 }

@@ -6,7 +6,7 @@
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 16:29:36 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 14:57:43 by ylenoel          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:30:47 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "ASpell.hpp"
+#include "SpellBook.hpp"
 
 class Warlock
 {
@@ -22,6 +23,8 @@ class Warlock
 		std::string _name;
 		std::string _title;
 		ASpell* _spellBook[4];
+		SpellBook _book;
+		
 	public:
 		Warlock(std::string name, std::string title);
 		~Warlock();
