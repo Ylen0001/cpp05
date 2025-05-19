@@ -5,115 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 16:40:11 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 17:23:40 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/05/13 10:19:43 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/05/13 17:12:01 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Warlock.hpp"
+#include "ATarget.hpp"
 
-Warlock::Warlock(std::string name, std::string title) : _name(name), _title(title), _book()
+Warlock::Warlock(){};
+
+Warlock::Warlock(std::string name, std::string title) : name(name), title(title)
 {
-	std::cout << getName() << ": This looks like another boring day." << std::endl; 
-	for(int i = 0; i < 4; i++)
-	{
-		this->_book.book[i] = NULL;
-	}
+	std::cout << this->name << ": This looks like another boring day." << std::endl;
 }
 
 Warlock::~Warlock()
 {
-	std::cout << getName() << ": My job here is done!" << std::endl;
-	for(int i = 0; i < 4; i++)
-	{
-		// if(this->_spellBook[i] != nullptr)
-		delete this->_book.book[i];
-	}
+	std::cout << this->name << ": My job here is done!" << std::endl;
 }
 
 Warlock::Warlock(const Warlock& other)
 {
-	std::cout << "Copy constructor called!" << std::endl;
-	this->_name = other.getName();
-	this->_title = other.getTitle();
+	this->name = other.name;
+	this->title = other.title;
 }
 
 Warlock& Warlock::operator=(const Warlock& other)
 {
-	std::cout << "Copy assignement called!" << std::endl;
 	if(this != &other)
 	{
-		this->_name = other.getName();
-		this->_title = other.getTitle();
+		this->name = other.name;
+		this->title = other.title;
 	}
 	return (*this);
 }
 
-void Warlock::introduce() const
-{
-	std::cout << getName() << ": I am " << getName() << ", " << getTitle() << "!" << std::endl;
-}
-
 std::string Warlock::getName() const
 {
-	return (this->_name);
+	return this->name;	
 }
 
 std::string Warlock::getTitle() const
 {
-	return (this->_title);
+	return this->title;
 }
 
-void Warlock::setTitle(const std::string& title)
+void Warlock::setTitle(std::string title)
 {
-	this->_title = title;
+	this->title = title;
+}
+
+void Warlock::introduce() const
+{
+	std::cout << this->name << ": I am " << this->name << ", " << this->title << "!" << std::endl; 
 }
 
 void Warlock::learnSpell(ASpell* spell)
 {
-	int i = 0;
-
-	while(i < 4)
-	{
-		if(this->_book.book[i] == NULL)
-		{
-			delete this->_book.book[i];
-			this->_book.book[i] = spell->clone();
-			return;
-		}
-		i++;
-	}
+	this->book.learnSpell(spell);
 }
 
 void Warlock::forgetSpell(std::string spellName)
 {
-	int i = 0;
-	while(this->_book.book[i])
-	{
-		if(this->_book.book[i]->getName() == spellName)
-		{
-			delete this->_book.book[i];
-			this->_book.book[i] = NULL;
-			// std::cout << this->getName() << " successfully forgot " << spellName << " spell!" << std::endl;
-			return;
-		}
-		i++;
-	}
-	return;
+	this->book.forgetSpell(spellName);
 }
 
 void Warlock::launchSpell(std::string spellName, ATarget& target)
 {
-	// (void)target;
-	int i = 0;
-	while(this->_book.book[i] && i < 4)
-	{
-		if(this->_book.book[i]->getName() == spellName)
-		{
-			this->_book.book[i]->launch(target);
-			break;
-		}
-		i++;
-	}
-	return;
+	this->book.createSpell(spellName)->launch(target);
 }
+

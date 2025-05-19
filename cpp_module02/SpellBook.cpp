@@ -5,100 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 16:06:53 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 16:31:12 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/05/13 11:52:33 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/05/13 17:13:30 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "SpellBook.hpp"
-#include "Fireball.hpp"
-#include "Polymorph.hpp"
-#include "Fwoosh.hpp"
 
 SpellBook::SpellBook()
 {
 	for(int i = 0; i < 4; i++)
-	{
 		this->book[i] = NULL;
-	}
 }
 
-SpellBook::~SpellBook()
+SpellBook::~SpellBook() // A checker
 {
 	for(int i = 0; i < 4; i++)
-	{
 		delete this->book[i];
-	}
 }
 
 SpellBook::SpellBook(const SpellBook& other)
 {
 	for(int i = 0; i < 4; i++)
 	{
-		if(other.book[i] != NULL)
-		{
-			this->book[i] = other.book[i];
-		}
+		delete this->book[i];
+		this->book[i] = other.book[i];
 	}
 }
 
 SpellBook& SpellBook::operator=(const SpellBook& other)
 {
-	for(int i = 0; i < 4; i++)
+	if(this != &other)
 	{
-		if(other.book[i] != NULL)
+		for(int i = 0; i < 4; i++)
 		{
+			delete this->book[i];
 			this->book[i] = other.book[i];
-		}
+		}	
 	}
 	return (*this);
 }
 
 void SpellBook::learnSpell(ASpell* spell)
 {
-	int i = 0;
-	while(this->book[i])
+	for(int i = 0; i < 4; i++)
 	{
 		if(this->book[i] == NULL)
 		{
-			this->book[i] = spell->clone();
-			break;
+			this->book[i] = spell;
+			return;
 		}
-		i++;
 	}
 }
 
-void SpellBook::forgetSpell(const std::string& spellname)
+void SpellBook::forgetSpell(const std::string& spellName)
 {
-	int i = 0;
-	while(this->book[i] && i < 4)
+	for(int i = 0; i < 4; i++)
 	{
-		if(this->book[i]->getName() == spellname)
+		if(this->book[i] && this->book[i]->getName() == spellName)
 		{
 			delete this->book[i];
 			this->book[i] = NULL;
 			return;
 		}
-		i++;
 	}
 }
-
 
 ASpell* SpellBook::createSpell(const std::string& spellName)
 {
-	int i = 0;
-	while(this->book[i] && i < 4)
+	for(int i = 0; i < 4; i++)
 	{
-		if(this->book[i] == NULL)
+		if(this->book[i] && this->book[i]->getName() == spellName)
 		{
-			if(spellName == "Fireball" )
-				return new Fireball;
-			else if(spellName == "Polymorph")
-				return new Polymorph;
-			else if(spellName == "Fwoosh")
-				return new Fwoosh;
+			return this->book[i]->clone();
 		}
-		i++;
 	}
 	return NULL;
 }
+
+

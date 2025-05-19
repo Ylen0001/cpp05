@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 15:57:26 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 17:21:38 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/05/13 11:48:49 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/05/13 12:03:14 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPELLBOOK_HPP
 #define SPELLBOOK_HPP
 
+#include <iostream>
 #include "ASpell.hpp"
 
 class SpellBook
@@ -25,8 +26,8 @@ class SpellBook
 		SpellBook();
 		~SpellBook();
 		void learnSpell(ASpell* spell);
-		void forgetSpell(const std::string& spellname);
-		ASpell* createSpell(const std::string& spellname);
+		void forgetSpell(const std::string& spellName);
+		ASpell* createSpell(const std::string& spellName);
 };
 
 #endif

@@ -5,25 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 15:12:22 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/25 14:56:57 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/05/13 11:30:18 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/05/13 11:31:21 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ATarget.hpp"
 #include "Dummy.hpp"
 
-Dummy::Dummy() : ATarget("Target Practice Dummy")
-{
-    // std::cout << "Dummy's constructor called!" << std::endl;
-}
+Dummy::Dummy() : ATarget("Target Practice Dummy"){};
 
-Dummy::~Dummy()
-{
-    // std::cout << "Dummy's destructor called!" << std::endl;
-}
+Dummy::~Dummy(){};
 
 ATarget* Dummy::clone() const
 {
-    return (new Dummy());
+	return(new Dummy);
 }

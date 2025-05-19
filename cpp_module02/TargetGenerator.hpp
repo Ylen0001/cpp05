@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Warlock.hpp                                        :+:      :+:    :+:   */
+/*   TargetGenerator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylenoel <ylenoel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 16:29:36 by ylenoel           #+#    #+#             */
-/*   Updated: 2025/04/23 17:01:51 by ylenoel          ###   ########.fr       */
+/*   Created: 2025/05/13 12:09:46 by ylenoel           #+#    #+#             */
+/*   Updated: 2025/05/13 12:12:56 by ylenoel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WARLOCK_HPP
-#define WARLOCK_HPP
+#ifndef TARGET_GENERATOR_HPP
+#define TARGET_GENERATOR_HPP
 
 #include <iostream>
+#include "ATarget.hpp"
 
-class Warlock
+class TargetGenerator
 {
 	private:
-		std::string _name;
-		std::string _title;
+		ATarget* targets[4];
+		TargetGenerator(const TargetGenerator& other);
+		TargetGenerator& operator=(const TargetGenerator& other);
 	public:
-		Warlock(std::string name, std::string title);
-		~Warlock();
-		Warlock(const Warlock& other);
-		Warlock& operator=(const Warlock& other);
-
-		std::string getName() const;
-		std::string getTitle() const;
-		void	setTitle(const std::string& title);
-		void introduce() const;
+		TargetGenerator();
+		~TargetGenerator();
+		void learnTargetType(ATarget* target);
+		void forgetTargetType(const std::string& targetType);
+		ATarget* createTarget(const std::string& targetType);
 };
 
 #endif
